@@ -25,9 +25,9 @@ function showError(error) {
 
 function sendLocation(position) {
   Elements.insert({
-    latitude:position.latitude,
-    longitude:position.longitude,
-    accuracy:position.accuracy,
+    latitude:position.coords.latitude,
+    longitude:position.coords.longitude,
+    accuracy:position.coords.accuracy,
   });
 }
 
