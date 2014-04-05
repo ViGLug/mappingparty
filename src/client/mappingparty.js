@@ -1,8 +1,6 @@
-// Meteor.subscribe('users');
 Meteor.subscribe('tags');
 Meteor.subscribe('elements');
 
-// Users = new Meteor.Collection('users');
 Tags = new Meteor.Collection('tags');
 Elements = new Meteor.Collection('elements');
 
@@ -25,9 +23,13 @@ function showError(error) {
 
 function sendLocation(position) {
   Elements.insert({
-    latitude:position.coords.latitude,
-    longitude:position.coords.longitude,
-    accuracy:position.coords.accuracy,
+    type:'poi',
+    userId:Meteor.userId(),
+    points:[
+      latitude:position.coords.latitude,
+      longitude:position.coords.longitude,
+      accuracy:position.coords.accuracy
+    ]
   });
 }
 

@@ -1,10 +1,8 @@
-// Users = new Meteor.Collection('users');
 Tags = new Meteor.Collection('tags');
 Elements = new Meteor.Collection('elements');
 
 Meteor.startup(function () {
     // Cleanup
-//     Users.remove({});
     Tags.remove({});
     Elements.remove({});
     
@@ -14,4 +12,10 @@ Meteor.startup(function () {
         Tags.insert({name:"Autonoleggio", osm_key:'amenity',
             osm_value:['car_rental']});
     }
+});
+
+Elements.allow({
+  insert: function (userId, element) {
+    return (userId && element.userId === userId);
+  },
 });
