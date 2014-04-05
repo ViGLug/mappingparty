@@ -4,6 +4,15 @@ Meteor.subscribe('elements');
 Tags = new Meteor.Collection('tags');
 Elements = new Meteor.Collection('elements');
 
+Template.map.rendered = function() {
+  var map = L.map('map').setView([45.500, 9.35], 10);
+
+  // add an OpenStreetMap tile layer
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+}
+
 function showError(error) {
   switch(error.code) {
     case error.PERMISSION_DENIED:
