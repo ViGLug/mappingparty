@@ -8,4 +8,4 @@ autopublish
 insecure
 leaflet
 accounts-ui
-accounts-github
+accounts-password
