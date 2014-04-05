@@ -1,2 +1,4 @@
+Meteor.subscribe('users');
 Meteor.subscribe('tags');
-Markers = new Meteor.Collection('tags');
+Meteor.subscribe('elements');
+
