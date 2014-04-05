@@ -16,7 +16,7 @@ Template.map.rendered = function() {
   var graphicalMarkers = {};
   query.observeChanges({
     added: function (id, element) {
-      graphicalMarker = L.marker([element.points[0][0], element.points[0][1]]);
+      graphicalMarker = L.marker([element.points[0].latitude, element.points[0].longitude]);
       graphicalMarkers[id] = graphicalMarker;
       map.addLayer(graphicalMarker);
     },
