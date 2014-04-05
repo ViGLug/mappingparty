@@ -1,7 +1,7 @@
-Meteor.subscribe('tags');
+// Meteor.subscribe('tags');
 Meteor.subscribe('elements');
 
-Tags = new Meteor.Collection('tags');
+// Tags = new Meteor.Collection('tags');
 Elements = new Meteor.Collection('elements');
 
 Template.map.rendered = function() {
@@ -11,6 +11,19 @@ Template.map.rendered = function() {
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
+  
+  var query = Elements.find();
+  var graphicalMarkers = {};
+  query.observeChanges({
+    added: function (id, element) {
+      graphicalMarker = L.marker([element.points[0][0], element.points[0][1]]);
+      graphicalMarkers[id] = graphicalMarker;
+      map.addLayer(graphicalMarker);
+    },
+    removed: function (id, pos) {
+      map.removeLayer(graphicalMarkers[id]);
+    }
+  });
 }
 
 function showError(error) {
