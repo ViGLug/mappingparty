@@ -25,11 +25,11 @@ function sendLocation(position) {
   Elements.insert({
     type:'poi',
     userId:Meteor.userId(),
-    points:[
+    points:[{
       latitude:position.coords.latitude,
       longitude:position.coords.longitude,
       accuracy:position.coords.accuracy
-    ]
+    }]
   });
 }
 
