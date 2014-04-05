@@ -9,4 +9,5 @@
 #login-buttons {
   position: absolute;
   z-index: 1;
+  right: 10px;
 }
