@@ -5,3 +5,34 @@ Meteor.subscribe('elements');
 Users = new Meteor.Collection('users');
 Tags = new Meteor.Collection('tags');
 Elements = new Meteor.Collection('elements');
+
+function showError(error) {
+  switch(error.code) {
+    case error.PERMISSION_DENIED:
+      alert("Permesso negato")
+      break;
+    case error.POSITION_UNAVAILABLE:
+      alert("Informazione non disponibile");
+      break;
+    case error.TIMEOUT:
+      alert("Timeout");
+      break;
+    case error.UNKNOWN_ERROR:
+      alert("Impossibile localizzarti");
+      break;
+  }
+}
+
+function sendLocation(position) {
+  Elements.insert({
+    latitude:position.latitude,
+    longitude:position.longitude,
+    accuracy:position.accuracy,
+  });
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(sendLocation, showError);
+} else {
+    alert("Il tuo browser non supporta la geolocalizzazione");
+}
