@@ -28,7 +28,8 @@ function sendLocation(position) {
     points:[{
       latitude:position.coords.latitude,
       longitude:position.coords.longitude,
-      accuracy:position.coords.accuracy
+      accuracy:position.coords.accuracy,
+      timestamp:position.timestamp
     }]
   });
 }
