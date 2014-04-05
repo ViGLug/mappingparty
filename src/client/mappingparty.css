@@ -5,3 +5,8 @@
   left: 0px;
   right: 0px;
 }
+
+#login-buttons {
+  position: absolute;
+  z-index: 1;
+}
