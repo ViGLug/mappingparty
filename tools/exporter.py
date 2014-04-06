@@ -17,13 +17,13 @@ def minMax (lat, lon):
     global max_lat
     global min_lon
     global max_lon
-    if lat < min_lat:
+    if int(lat) < int(min_lat):
         min_lat = lat
-    if lat > max_lat:
+    if int(lat) > int(max_lat):
         max_lat = lat
-    if lon < min_lon:
+    if int(lon) < int(min_lon):
         min_lon = lon
-    if lon > max_lon:
+    if int(lon) > int(max_lon):
         max_lon = lon
 
 def node (latitude, longitude, timestamp, attributes):
