@@ -39,6 +39,8 @@ def node (latitude, longitude, timestamp, attributes):
         lon = longitude,
         timestamp=time.strftime(timestamp)
     )
+    for key in attributes:
+        node.append(E.tag(k=key, v=attributes[key]))
     return node
 
 jsonText = "{_id:\"asd\", timestamp:\"123123123\"}"
